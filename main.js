@@ -64,7 +64,8 @@ class MermaidLightboxModal extends Modal {
     this.naturalHeight = size.height;
 
     this.clonedSvg = svg.cloneNode(true);
-    this.clonedSvg.removeAttribute("style");
+    // Obsidian 1.15's Pele renderer stores its color and font variables on the
+    // root SVG. Keep those inline styles when moving the clone into the modal.
     this.clonedSvg.removeAttribute("width");
     this.clonedSvg.removeAttribute("height");
     this.clonedSvg.classList.add("mermaid-lightbox-svg");
